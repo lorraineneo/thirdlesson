@@ -1,11 +1,13 @@
 {%load staticfiles%}
 
 <link rel="stylesheet" type="text/css" href="{% static 'notes/style.css' %}" />
-
+<h2>Total number of notes: {{total}}</h2>
 {% if notes %}
     {% for note in notes %}
         <a href={%url 'detail' note.id %}>
-            <div class="postit">
+            <div class="postit" style="background:{{note.color}};color:{{note.fontcolor}}">
+                <div id="base" style="border-color:{{note.folder.color}} transparent transparent transparent;"><div class="rotatevertical">{{note.folder.title}}</div></div>
+                <br>
                 <u>{{note.title}}</u>
                 <br>
                 {{note.content}}
