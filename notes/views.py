@@ -20,6 +20,7 @@ class NoteList(ListView): #https://docs.djangoproject.com/en/1.7/topics/class-ba
     def get_queryset(self):
         folder = self.kwargs['folder']
         if folder == '':
+            self.queryset = Note.objects.all()
             return self.queryset
         else:
             self.queryset = Note.objects.filter(folder__title__iexact=folder)
